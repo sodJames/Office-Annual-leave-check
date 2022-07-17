@@ -1,0 +1,22 @@
+num_list1 = ['0', '1', '0', '1', '1', '0', '1', '0', '1', '0']
+num_list2 = ['0', '1', '1', '1', '0', '0', '1', '0', '0', '1']
+num_list3 = ['1', '0', '1', '1', '0', '1', '1', '0', '1', '1']
+
+num = input('Enter three digits：')
+
+# num input  [*,*,*]
+hundreds_digit = int(num[0])
+
+tens_digit = int(num[1])
+
+ones_digit = int(num[2])
+
+#  code from list
+code = num_list1[hundreds_digit] + num_list2[tens_digit] + num_list3[ones_digit]
+
+# Jackpot 111 or 000
+if code == '111' or code == '000':
+    print('Your result is：' + code + '，You are a winner！')
+
+else:
+    print('Your result is：' + code + '，Try again next time')
