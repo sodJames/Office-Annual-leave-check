@@ -1,0 +1,31 @@
+BMI Calculator
+
+#Get input information
+gender = input('Are you male or female?:')
+height = float(input('What is your hight（m）?：'))
+weight = float(input('What is your weight（kg）?：'))
+#  BMI 
+BMI = weight / (height*height)
+
+
+if gender == 'male':
+    if BMI <= 17.3:
+        print('skinny')
+    elif BMI <= 23.9:
+        print('average')
+    elif BMI <= 27.4:
+        print('over weight')
+    else:
+        print('obesity')
+
+
+elif gender == 'female':
+    if BMI <= 17.1:
+        print('skinny')
+    elif  BMI <= 23.4:
+        print('average')
+    elif  BMI <= 25.8:
+        print('over weight')
+    else:
+        print('obesity')
+
