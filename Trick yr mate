@@ -1,0 +1,17 @@
+wages= input('How much do you earn per week?:')
+
+if wages<=500:
+    print('Time to speak to the HR')
+    if 100<wages<500:
+        print('Get a real job, man')
+    elif wages<100:
+        print('OMG! Somebody give this guy a pie')
+elif 500<wages<=1000:
+    print('You wont be hungry')
+else:
+    print('EC wont defeat you')
+    if 1000<wages<=20000:
+        print('You are richer than Ironman')
+    else:
+        print('Is your last name Rockefeller？')
+print('End of program')
