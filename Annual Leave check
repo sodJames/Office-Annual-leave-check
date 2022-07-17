@@ -1,0 +1,18 @@
+import pandas as pd
+
+worktime = int(input('How long have you been working with the company：'))
+
+# employee works more than 1 year but less than 2 
+if 1 < worktime < 2:
+    print('You have 4 weeks of annual leave')
+    
+# employee works more than 10 years but less than 20
+elif 10 <= worktime <20:
+    print('You have 6 weeks of annual leave')
+    
+# employee works for 20 years and over
+elif  worktime >= 20:
+    print('You have 8 weeks of annual leave')
+
+else:
+    print('Get your a** back to work!')
