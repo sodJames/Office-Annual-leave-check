@@ -1,0 +1,18 @@
+
+
+while True:
+   
+    print('Thank you for using XXX VEM')
+    # code of choices
+    print('1.Coca 2.IceCoffe 0.Exit')
+    number = input("Please enter the code：")
+
+    if number == '0':
+        print("XXX VEM")  
+        break
+    elif number == '1':
+        print("One Coca")
+    elif number == '2':
+        print("One IceCoffe")
+        
+  ???????
