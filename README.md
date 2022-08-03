@@ -1,5 +1,33 @@
-# Small -tools
-Begginer's code-Cheers
+
+#Begginer's code-Cheers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
