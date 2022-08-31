@@ -1,3 +1,25 @@
+#Version 1
+# 'Would you like to go to the beach? (y/n): '
+like_to = str(input('Would you like to go to the beach? (y/n): ').strip()).lower()
+# 'Is it Saturday? (y/n): '
+day_sat = str(input('Is it Saturday? (y/n): ').strip()).lower()
+# 'Is it Sunday? (y/n): '
+day_sun = str(input('Is it Sunday? (y/n): ').strip()).lower()
+# 'Is the tide out? (y/n): '
+tide_out = str(input('Is the tide out? (y/n): ').strip()).lower()
+
+result_1 = like_to.startswith('y') and tide_out.startswith('y')
+result_2 = day_sat.startswith('y') ^ day_sun.startswith('y')
+final_res = str(result_1 and result_2).lower()
+print()
+
+# 'It is {} that you can go to the beach today.'
+print(f'It is {final_res} that you can go to the beach today.')
+
+
+
+
+#Version 2
 # Pseudo Code
 # Ask name;ask if want to go to beach. n=printout , yes=continue
 #whats current temp, false=printout, true=continue if; same as minimum temprature
