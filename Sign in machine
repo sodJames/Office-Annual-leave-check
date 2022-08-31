@@ -1,14 +1,14 @@
 attendance_list = ['Luara', 'CJ']
 
 # get input name
-name = input('Please enter your name：')
+name = input('Please enter your name：').strip()
 
 # if name already  list
 if name in attendance_list:
     print('You have already sign in')
 
 else:
-    answer = input('Do you want to sign in now？')
+    answer = input('Do you want to sign in now？').strip().lower()
 
     if answer == 'yes':
         attendance_list.append(name)
