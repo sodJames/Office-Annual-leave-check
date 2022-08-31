@@ -1,0 +1,18 @@
+fst_name = input('Please enter your first name: ').strip().title()
+# enter the first number
+fst_num = input(f'Hi {fst_name}, please enter the first number: ')
+# second number: '
+sec_num = input('Please enter the second number: ')
+# third number: '
+thrd_num = input('Please enter the third number: ')
+if not all ([fst_num.isdigit(),
+         sec_num.isdigit(),
+         thrd_num.isdigit()]):
+    print('One or more of the numbers are invalid.')
+elif (fst_num == sec_num or sec_num == thrd_num) ^ (thrd_num == fst_num):
+    print('Two of the numbers are the same.')
+
+elif fst_num == sec_num == thrd_num :
+    print('All the numbers are the same.')
+else:
+    print('All the numbers are different.')
