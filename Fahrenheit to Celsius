@@ -1,3 +1,20 @@
+#Function version
+
+def convert_to_celsius(the_temp):
+    """ Turn temperature Fahrenheit into Celsius"""
+    celsius = round((float((the_temp - 32) / 1.8)), 1)
+    return celsius
+    
+cool_temperature = 50
+celsius_temperature = convert_to_celsius(cool_temperature)
+print(celsius_temperature)
+bit_warmer = 50.5
+celsius_temperature = convert_to_celsius(bit_warmer)
+print(celsius_temperature)
+
+
+#Rookie version
+
 # input Fehrenheit
 f = int(input('Today's Fehrenheit：'))
 # Fehrenheit into Celsius
