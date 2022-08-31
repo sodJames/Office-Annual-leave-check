@@ -1,0 +1,20 @@
+# 'Are you a vegetarian? '
+veget_1 = str(input('Are you a vegetarian? ').strip()).lower().startswith('y')
+# 'Are you a vegan? '
+vegan_1 = str(input('Are you a vegan? ').strip()).lower().startswith('y')
+# 'Are you a meat eater? '
+meat_eater = str(input('Are you a meat eater? ').strip()).lower().startswith('y')
+# 'Would you like to eat a pizza? '
+want_pizza = str(input('Would you like to eat a pizza? ').strip()).lower().startswith('y')
+print()
+
+result_1 = str((veget_1 and want_pizza) and (not(meat_eater) and not(vegan_1))).lower()
+result_2 = str(((vegan_1 and want_pizza) or (veget_1 and want_pizza)) and not(meat_eater)).lower()
+result_3 = str((meat_eater and want_pizza) and (not(vegan_1) and not(veget_1))).lower()
+
+
+print(f'It is {result_1} that you would like a veggie pizza.')
+
+print(f'It is {result_2} that you would like a vegan pizza.')
+#  carnivore pizza.
+print(f'It is {result_3} that you would like a carnivore pizza.')
