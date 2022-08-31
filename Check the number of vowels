@@ -14,7 +14,7 @@ def get_vowel_count(message, required_case = 'both'):
         result = msg_l
     
     return result
-
+# outside
 print(get_vowel_count('The function does not display any output therefore no strings are given.'))
 print(get_vowel_count('The function does not display any output therefore NO strings are given.', 'lower'))
 print(get_vowel_count('No strings are given as the function does not display ANY output.', 'Lower'))
