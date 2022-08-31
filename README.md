@@ -2,7 +2,51 @@
 #Begginer's code-Cheers
 
 
+fst_name = input('Please enter your first name: ').strip().title()
+the_name = fst_name.replace(' ','').replace('-','')
+if fst_name == '':
+    print('You did not enter any characters.')
 
+elif not the_name.isalpha():
+    print('Non alphabetic characters were entered.')
+
+len_name = len(fst_name)
+if len_name == 1 :
+    print(f'{len_name} {fst_name}')
+    print(f'There is {len_name} letter in {fst_name}.')
+elif the_name.isalpha():
+    the_name = len(the_name)
+    for chr_counter, each_chr in enumerate(fst_name, start=1):
+        print(f'{chr_counter} {each_chr}')
+    print(f'There are {the_name} letters in {fst_name}.')
+
+
+
+
+
+
+START_NUM = 1
+# 'Please enter a message: '
+enter_msg = input('Please enter a message: ').strip()
+len_ms = len(enter_msg)
+if enter_msg == '':
+    print('You did not enter a message.')
+else:
+    
+        
+    for count_chr, each_chr in enumerate(enter_msg, start=1):
+        if each_chr.isdigit():
+            chr_type = 'digit'
+        elif each_chr.isalpha():
+            if each_chr.islower():
+                chr_type = 'lower alpha'
+            else:
+                chr_type = 'upper alpha'
+        elif each_chr.isspace():
+            chr_type = 'space'
+        else:
+            chr_type = 'symbol'
+        print(f'{count_chr:<2} {each_chr} - {chr_type}')
 
 
 
