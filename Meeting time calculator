@@ -1,0 +1,22 @@
+# enter the start time (hours)
+stime_hr = int(input('Please enter the start time (hours): '))
+
+# enter the start time (minutes)
+stime_min = int(input('Please enter the start time (minutes): '))
+
+# enter the duration (minutes): 
+duration_min = int(input('Please enter the duration (minutes): '))
+print()
+
+duration_hrs = float(duration_min / 60)
+duration_hrs = round(duration_hrs)
+time_min = float(stime_min / 60)
+time_min = round(time_min)
+total_hr = duration_hrs + stime_hr + time_min
+total_min =  duration_min - (duration_hrs * 60 -  stime_min) - round(stime_min/60) * 60
+
+
+
+print(f'The meeting will start at {stime_hr:0>2d}:{stime_min:0>2d}')
+
+print(f'The meeting will end at {total_hr:0>2d}:{total_min:0>2d}')
