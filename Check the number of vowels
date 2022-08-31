@@ -1,0 +1,24 @@
+def get_vowel_count(message, required_case = 'both'):
+    """Check the number of vowels in the message."""
+    msg_l = message.count('a') + message.count('e') + message.count('i') + message.count('o') + message.count('u') 
+    msg_u = message.count('A') + message.count('E') + message.count('I') + message.count('O') + message.count('U')
+    msg_both = message.count('A') + message.count('E') + message.count('I') + message.count('O') + message.count('U') + message.count('a') + message.count('e') + message.count('i') + message.count('o') + message.count('u') 
+    if msg_both == 0 :
+        result = '0'
+    elif required_case == 'both' or required_case.lower()[0] == 'a' :
+        result = msg_both
+
+    elif (required_case.lower())[0] == 'u' :
+        result = msg_u
+    elif (required_case.lower())[0] == 'l' :
+        result = msg_l
+    
+    return result
+
+print(get_vowel_count('The function does not display any output therefore no strings are given.'))
+print(get_vowel_count('The function does not display any output therefore NO strings are given.', 'lower'))
+print(get_vowel_count('No strings are given as the function does not display ANY output.', 'Lower'))
+print(get_vowel_count('# This particular function returns on object of type Int.', 'upper'))
+print(get_vowel_count('# No strings are given as the function does not display ANY output.', 'All vowels please'))
+print(get_vowel_count('N0 v0w3l5 h3r3.', 'All vowels'))
+print(get_vowel_count('', 'Upper'))
