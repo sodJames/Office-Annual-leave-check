@@ -1,0 +1,32 @@
+# length of side 1
+side1 = input('Enter the length of side 1: ').strip()
+side1_dot = side1.replace('.','')
+# length of side 2
+side2 = input('Enter the length of side 2: ').strip()
+side2_dot = side2.replace('.','')
+# length of side 3
+side3 = input('Enter the length of side 3: ').strip()
+side3_dot = side3.replace('.','')
+# remove double ..number and -
+
+if any ([side1.count('.') > 1,
+    side2.count('.') > 1,
+    side3.count('.') > 1]):
+    print('One or more of the sides was invalid.')
+elif not all ([side1_dot.isdigit(), side2_dot.isdigit(), side3_dot.isdigit()]) :
+    print('One or more of the sides was invalid.')
+   
+elif (side1 + side2) < side3 and (side2 + side3) < side1 and (side3+side1) < side2 :
+    print('The triangle inequality theorem requires the sum of two sides to be greater than the third.')
+else:
+ #type of triangle    
+    if side1 == side2 == side3 :
+        the_angle = 'an equilateral'
+    elif side1 == side2 or side2 == side3 or side3 == side1 :
+        the_angle = 'an isosceles'
+    elif side1 != side2 != side3 :
+        the_angle = 'a scalene'
+    side1 = float(side1)
+    side2 = float(side2)
+    side3 = float(side3)
+    print(f'A triangle with sides {side1}, {side2} and {side3} is {the_angle} triangle.')
