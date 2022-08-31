@@ -1,0 +1,61 @@
+# Pseudo Code
+# Ask name;ask if want to go to beach. n=printout , yes=continue
+#whats current temp, false=printout, true=continue if; same as minimum temprature
+#ask if want icecream, n=printout, yes = continue
+#ask how much money.....
+#final print(Enjoy your time at the beach)
+
+
+first_name = input('Please enter your first name: ').strip().title()
+#  beach? 
+go_beach = input(f'Hi {first_name}, would you like to go to the beach? (y/n): ').strip().lower()
+if go_beach == 'n':
+    print('Ok, enjoy your time at home.')
+
+else:
+    current_temp = input(f'{first_name}, what is the current temperature: ')
+    if current_temp.isnumeric() == False:
+        print('The temperature needs to be numeric.')
+
+    else :
+        min_temp = input('What is the minimum temperature for going to the beach? ')
+    
+        if min_temp.isnumeric() == False:
+            print('The temperature needs to be numeric.')
+        current_temp = int(current_temp)
+        min_temp = int(min_temp)
+        if current_temp >= min_temp:
+        
+            
+            print(f'You can go to the beach because it is {current_temp:.1f} degrees.')
+        else:
+            print("It's not warm enough, stay at home.")
+
+        if current_temp >= min_temp:   
+# ice cream ?  '
+
+            like_ice_cream = input(f'Would you like to buy an ice cream {first_name}? (y/n): ').strip().lower()
+            if like_ice_cream == 'n':
+                print('Enjoy your time at the beach.')
+          
+            else:
+                have_cash = input('How much cash do you have? ')
+                if have_cash == '0':
+                     print('Please remember to bring cash next time.')
+                     print('Enjoy your time at the beach.')
+                elif  have_cash.count('.') == 1 :
+                    if have_cash.replace('.','').isnumeric() == False:
+                        print(f'{have_cash} is not a valid amount of money.')
+                        print('Enjoy your time at the beach.')
+
+                    else:
+                        ice_price = input('How much is an ice cream? ')
+                        if ice_price.replace('.','').isnumeric() == False:
+                            print(f'{ice_price} is not a valid cost for an ice cream.')
+                        if have_cash < ice_price:
+                            print(f'Sorry {first_name}, no ice cream today.')
+                            print('Enjoy your time at the beach.')
+                        else:
+                            left_cash = float(have_cash) - float(ice_price)
+                            print(f'You can buy an ice cream and you will have ${left_cash:.2f} left.')
+                            print('Enjoy your time at the beach.')
