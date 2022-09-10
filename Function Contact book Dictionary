@@ -1,0 +1,192 @@
+def get_number_as_string(message, min_length):
+    """Enter a number using the message it received and returns the entered number as a string"""
+    while not (ent_msg := input(message).strip().replace(' ', '')).isdigit():            
+        print('Digits only please.')
+    else:
+        if len(str(ent_msg)) < min_length :
+            print(f'The number must be at least {min_length} digits long.')
+            while not (ent_msg := input(message).strip().replace(' ', '')).isdigit(): 
+                print('Digits only please.')
+    return ent_msg
+
+
+
+
+
+def get_name(message):
+    '''enter a name, removes any extra spaces, titled the name and returns it as a string'''
+    (enter_option := input(message)).strip().replace(' ', '').replace('_', '').title()
+    enter_2 = enter_option.strip().title()
+    
+    return enter_2
+
+
+
+
+
+def get_option(prompt_msg = 'Option: '):
+    '''enter an option, removes extra spaces, converts the text into lower case and returns it as a string.'''
+    (enter_option := input(prompt_msg)).strip().replace(' ', '').replace('_', '').lower()
+    enter_2 = enter_option.strip().lower()
+    
+    return enter_2
+
+
+
+
+def display_as_list(display_items, message='Item', counter_reqd='True'):
+    """function displays  items if items in the list"""
+    if len(display_items) > 0 :
+        print()
+        count_re = 0
+        for dis_item in display_items :
+            if counter_reqd == 'True' or counter_reqd == True :
+                count_re += 1
+                
+                print(f'{message} {count_re}: {dis_item}')
+                
+            else:
+                print(dis_item)
+        return True
+
+    else:
+        print('Sorry, the list is empty.')
+        return False
+    return True
+
+
+def add_edit_contact(contacts):
+    """add or edit items in the dictionary of contacts"""
+    name_con = get_name('Contact: ')
+    
+
+    if name_con not in contacts.keys():
+        num_con = get_number_as_string('Contact number: ',3)
+        contacts[name_con] = num_con
+        print(f'{name_con} has been added with the number: {num_con}.')
+        return True
+    else:
+        print(f'{name_con} is already in the phone system.')
+        ask_op = get_option('Would you like to change the phone number? y/n: ')
+        if ask_op == 'y':
+            new_num = get_number_as_string('New number: ',3)
+            if new_num != contacts[name_con]:
+                contacts[name_con] = new_num
+                print(f'{name_con} has been updated with the number: {new_num}.')
+                return True
+            else:
+                print(f'{name_con} already has the number {new_num}. The number has not been changed.')
+                return False
+        else:
+            print(f'{name_con} has not been updated.')
+            return False
+
+
+
+def remove_contact(contacts):
+    """remove items in the dictionary of contacts"""
+    if contacts == {}:
+        print('Sorry, there are no contacts.')
+        return False
+    else:
+        name_con = get_name('Enter the contact to be removed (or press Enter to cancel): ')
+        if name_con == '':
+            print('Cancelling the remove request.')
+            return False
+        elif name_con in contacts.keys():
+            del contacts[name_con]
+            print(f'{name_con} has been removed from the contacts.')
+            return True
+        else:
+            print(f'Sorry, {name_con} is not a contact.')
+            return False
+
+
+
+def show_contact(contacts):
+    """Show items in the dictionary of contacts and return boolean"""
+    if contacts == {}:
+        print('Sorry, there are no contacts.')
+        return False
+    else:
+        ent_name = get_name('Contact: ')
+        if ent_name in contacts.keys():
+            print(f'{ent_name}: {contacts[ent_name]}')
+            return True
+        else:
+            print(f'{ent_name} is unknown.')
+            return False
+
+
+
+def display_contacts(contacts):
+    """Display items in the dictionary of contacts and return boolean"""
+    if contacts == {}:
+        print('Sorry, there are no contacts.')
+        return False
+    else:
+    
+        for dis_con in contacts.keys() :
+           
+            print(f'{dis_con:<15}: {contacts[dis_con]}')
+        return True
+
+
+
+def empty_contacts(contacts):
+    """Remove all  dictionary of contacts and return boolean"""
+    if contacts == {}:
+        print('Sorry, there are no contacts.')
+        return False
+    else:
+        answer_1 = get_option('Please confirm that you want remove all the contacts.  y/n: ')
+        if answer_1 == 'y':
+            contacts.clear()
+            print('All the contacts have been removed.')
+            return True
+        else:
+            print('The contacts have not been removed.')
+            return False
+        
+
+
+phone_options = [
+'Telephone contact options.',
+'A) Add/edit a contact.',
+'R) Remove a contact.',
+'F) Find a contact.',
+'D) Display all contacts.',
+'E) Empty all contacts.',
+'Q) Quit.'
+]
+tel_contact = {}
+return_value = display_as_list(phone_options, counter_reqd = False)
+t_option = get_option().strip()
+while t_option != 'q':
+
+    if t_option == 'a':
+        add_edit_contact(tel_contact)
+        return_value = display_as_list(phone_options, counter_reqd = False)
+        t_option = get_option().strip()
+    elif t_option == 'r':
+        remove_contact(tel_contact)
+        return_value = display_as_list(phone_options, counter_reqd = False)
+        t_option = get_option().strip()
+    elif t_option == 'f':
+        show_contact(tel_contact)
+        return_value = display_as_list(phone_options, counter_reqd = False)
+        t_option = get_option().strip()
+    elif t_option == 'd':
+        display_contacts(tel_contact)
+        return_value = display_as_list(phone_options, counter_reqd = False)
+        t_option = get_option().strip()
+    elif t_option == 'e':
+        empty_contacts(tel_contact)
+        return_value = display_as_list(phone_options, counter_reqd = False)
+        t_option = get_option().strip()
+    else:
+        return_value = display_as_list(phone_options, counter_reqd = False)
+        t_option = get_option().strip()
+        
+else:
+    print('Bye.')
