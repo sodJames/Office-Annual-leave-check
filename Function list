@@ -1,0 +1,218 @@
+
+
+def display_as_list(display_items, message='Item', counter_reqd='True'):
+    """function displays  items if items in the list"""
+    if len(display_items) > 0 :
+        print()
+        count_re = 0
+        for dis_item in display_items :
+            if counter_reqd == 'True' or counter_reqd == True :
+                count_re += 1
+                
+                print(f'{message} {count_re}: {dis_item}')
+                
+            else:
+                print(dis_item)
+        return True
+
+    else:
+        print('Sorry, the list is empty.')
+        return False
+    return True
+
+
+
+def get_option(prompt_msg = 'Option: '):
+    '''enter an option, removes extra spaces, converts the text into lower case and returns it as a string.'''
+    (enter_option := input(prompt_msg)).strip().replace(' ', '').replace('_', '').lower()
+    enter_2 = enter_option.strip().lower()
+    
+    return enter_2
+
+
+
+def get_item(prompt_msg = 'Item: '):
+    '''enter an item, removes any extra spaces, capitalises the entered text and returns it as a string'''
+    (enter_option := input(prompt_msg)).strip().replace(' ', '').replace('_', '').lower()
+    enter_2 = enter_option.strip().lower().capitalize()
+    
+    return enter_2
+
+
+
+def get_total_items(user_list):
+    """showing the total number of elements there are in the list"""
+    cont_num = str(len(user_list))
+    if cont_num == '1':
+        disp_1 = f'There is {cont_num} item in the list.'
+        return disp_1
+    elif cont_num == 0 :
+        disp_0 = 'There are 0 items in the list.'
+        return disp_0
+    else:
+        disp_2 = f'There are {cont_num} items in the list.'
+        return disp_2
+
+
+
+
+def add_item(user_list):
+    """showing the total number of elements there are in the list,ask if add item to list"""
+    ent_msg = get_item('Please enter the item to be added: ')
+    if user_list == []:
+        if ent_msg == '':
+            print('No item was entered.')
+            result_12 = get_total_items(user_list)
+            print(result_12)
+            return False
+        
+        else:
+            print(f'[{ent_msg}] has been added to the list.')
+            user_list.append(ent_msg)
+            result_1 = get_total_items(user_list)
+            print(result_1)
+            return True
+    
+    elif user_list != []:
+        if ent_msg == '':
+            print('No item was entered.')
+            result_12 = get_total_items(user_list)
+            print(result_12)
+            return False
+        elif ent_msg == user_list[0]:
+            want_ad = get_option(f'[{ent_msg}] is already in the list, please confirm that you want to add another (y/n): ')
+            if want_ad == 'n'or want_ad == '' :
+                print(f'[{ent_msg}] was not added.')
+                result_13 = get_total_items(user_list)
+                print(result_13)
+                return False
+            else:
+                print(f'[{ent_msg}] has been added to the list.')
+                user_list.append(ent_msg)
+                result_14 = get_total_items(user_list)
+                print(result_14)
+                return True
+        else:
+            print(f'[{ent_msg}] has been added to the list.')
+            user_list.append(ent_msg)
+            result_1 = get_total_items(user_list)
+            print(result_1)
+            return True
+
+
+def remove_item(user_list):
+    """enter the item number to be removed.The entered item number needs to be validated int"""
+
+    if user_list != [] :
+        
+        while not (remv_it := get_option('Please enter the item number of the item to remove or 0 to cancel: ').strip()).isdigit():   
+            
+            print('The item number must be a positive integer.')
+        else:
+            if remv_it == '0':
+                print('Remove request cancelled.')
+                return False
+            elif int(remv_it) > len(user_list) :
+                print(f'Sorry item {remv_it} does not exist in the list.')
+                return False
+            else:
+                remv_y = get_option('Are you sure (y/n)? ').strip().lower()
+                remv_it = int(remv_it)
+                remv_num = remv_it - 1
+                res_1 = user_list[remv_num]
+                if remv_y == 'y' :                          
+                    print(f'Item {remv_it} [{res_1}] has been removed from the list.')
+                    del user_list[remv_num]
+                    return True
+                else:
+                    print(f'Item {remv_it} [{res_1}] was not removed from the list.')
+                    return False
+
+
+    else:
+        print('Sorry, the list is empty.')
+        return False
+
+
+
+   
+def empty_list(user_list):
+    """user confirms they want to empty the list"""
+    if user_list != [] :
+        answ_1 = (get_option(f'Please confirm that you want to empty the list (y/n): ')).strip().lower()
+        if answ_1 == 'y':
+            user_list = user_list.clear()
+            print('All the items have been removed from the list.')
+            return True
+        else:
+            print('The list has not been emptied.')
+            return False
+    else:
+        print('Sorry, the list is empty.')
+        return False
+
+
+
+
+def count_instances(user_list):
+    """If the list is not empty then count_instances asks the user to enter the item to be counted"""
+    if user_list != [] :
+        answ_1 = (get_item('Please enter the item to be counted: ')).strip().lower().capitalize()
+        count_num = user_list.count(answ_1)
+        if user_list.count(answ_1) == 1:
+            print(f'There is {count_num} instance of [{answ_1}] in the list.')
+            return True
+        else:
+            print(f'There are {count_num} instances of [{answ_1}] in the list.')
+            return True
+
+
+    else:
+        print('Sorry, the list is empty.')
+        return False
+
+
+
+shopping_options = [
+'Shopping list options.',
+'A) Add an item.',
+'R) Remove an item by its item number.',
+'D) Display the total number of items in the list.',
+'L) List all the items.',
+'E) Empty the list.',
+'C) Count the instances of an item in the list.',
+'Q) Quit.'
+]
+shop_item = []
+return_value = display_as_list(shopping_options, counter_reqd = False)
+t_option = get_option().strip()
+while t_option != 'q':
+    
+    if t_option == 'a' or t_option == 'A' :
+        
+        add_item(shop_item)
+        tt_item = get_total_items(shop_item)
+        return_value = display_as_list(shopping_options, counter_reqd = False)
+        t_option = get_option().strip()
+    elif t_option == 'D' or t_option == 'd' :
+        print(get_total_items(shop_item))
+        return_value = display_as_list(shopping_options, counter_reqd = False)
+        t_option = get_option().strip()
+    elif t_option == 'l' :
+        display_as_list(shop_item)
+        return_value = display_as_list(shopping_options, counter_reqd = False)
+        t_option = get_option().strip()
+    elif t_option == 'r' :
+        remove_item(shop_item)
+        return_value = display_as_list(shopping_options, counter_reqd = False)
+        t_option = get_option().strip()
+    elif t_option == 'e' :
+        empty_list(shop_item)
+        return_value = display_as_list(shopping_options, counter_reqd = False)
+        t_option = get_option().strip()
+
+    else:
+        return_value = display_as_list(shopping_options, counter_reqd = False)
+        t_option = get_option().strip()
+else:
+    print('Shopping time.')
