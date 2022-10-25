@@ -1,0 +1,112 @@
+class Toy:
+    """Modify  the code add type"""
+    def __init__(self, name, colour, cost, toy_type):
+        self.name = name
+        self.colour = colour
+        self.cost = cost
+        self.toy_type = toy_type
+
+
+class ToyBox:
+    """Modify the addtoy method so that the type of the toy is available. """
+    def __init__(self):
+        self.all_toys = []
+
+    def add_toy(self, name, colour, cost, toy_type):
+        a_toy = Toy(name, colour, cost, toy_type)
+        self.all_toys.append(a_toy)
+
+    def get_total_toys(self):
+        return len(self.all_toys)
+
+    def get_total_cost(self):
+        price = 0
+        for a_toy in self.all_toys:
+            price += a_toy.cost
+        return price
+
+    def get_cheapest_toy(self):
+        my_dict = {}
+        list_price = []
+        
+        
+        if len(self.all_toys) == 0:
+            return f'The toy box is empty.'
+        else:
+            for a_toy in self.all_toys:
+                car_n = a_toy.name
+                sin_price = a_toy.cost
+
+                my_dict[sin_price] = car_n
+            
+            list_price.extend(my_dict.keys())
+            
+            cheapest1 = min(list_price)
+            
+            
+            cheapest2 = my_dict.get(cheapest1)
+            return cheapest2
+
+    def find_toy(self, name):
+        list_name = []
+        for a_toy in self.all_toys:
+            if a_toy.name.title() == name.title():
+                
+                return a_toy
+        else:                #####indentation for retrive to the begginning of the loop
+            return False
+
+    def remove_toy(self, name):
+        for a_toy in self.all_toys:
+            if a_toy.name.title() == name.title():
+                self.all_toys.remove(a_toy)
+                return True
+        else:
+            return False
+
+    def get_by_toy_type(self, toy_type):
+        list_type = []
+
+        if len(self.all_toys) == 0:
+            return (False, f'The toy box is empty.')
+        else:
+            for a_toy in self.all_toys:
+                car_n = a_toy.name
+                car_t = a_toy.toy_type
+                if a_toy.toy_type.title() == toy_type.title():
+                    list_type.append(a_toy.name)
+            else:
+                if a_toy.toy_type.title() == toy_type.title():
+                    return (True, list_type)
+                else:
+                    return (False, f'There are no toys of type {toy_type} in the toybox')
+                    
+
+    def __str__(self):
+        if len(self.all_toys) == 0:
+            return f'The toy box is empty.'
+        else:
+
+            msg = f'The toy box contains {self.get_total_toys()} toys\n'
+            for a_toy in self.all_toys:
+                msg += f'A {a_toy.colour.lower()} {a_toy.toy_type.lower()} called {a_toy.name} which cost ${a_toy.cost:.2f}\n'
+            msg += f'Total cost: ${self.get_total_cost():.2f}'
+            return msg
+
+            
+            
+
+red_toybox = ToyBox()
+print('Adding toys ...')
+red_toybox.add_toy('Big Ted', 'Grey', 14.99, 'Teddy bear')
+red_toybox.add_toy('Buzz Lightyear', 'Yellow', 12.99, 'Action figure')
+red_toybox.add_toy('Rocking horse', 'Green', 19.99, 'Wooden toy')
+red_toybox.add_toy('Poorly Ted', 'Yellow', 14.99, 'Teddy bear')
+print(red_toybox)
+print()
+print(red_toybox.get_by_toy_type('teddy bear'))
+print(red_toybox)
+print()
+print(red_toybox.get_by_toy_type('Bike'))
+print(red_toybox)
+
